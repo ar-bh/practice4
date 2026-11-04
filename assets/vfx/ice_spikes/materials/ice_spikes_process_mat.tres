@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cn5f2r0bo14mj"]
+
+[ext_resource type="Shader" uid="uid://blj64r2i3ycu3" path="res://assets/vfx/ice_spikes/materials/ice_spikes_process.gdshader" id="1_nk306"]
+
+[resource]
+shader = ExtResource("1_nk306")
+shader_parameter/particles_count = 8
+shader_parameter/min_radius = 0.5
+shader_parameter/max_radius = 1.0
+shader_parameter/min_scale = 1.0
+shader_parameter/max_scale = 1.0
+shader_parameter/sub_emitter_frequency = 0.0

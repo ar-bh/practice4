@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cbdslv1k8ubbw"]
+
+[ext_resource type="Texture2D" uid="uid://206pnoc2labm" path="res://assets/entities/player/health_bar/health_point.png" id="1_2jctt"]
+
+[node name="TextureRect" type="TextureRect" unique_id=1167285096]
+mouse_filter = 2
+texture = ExtResource("1_2jctt")
+stretch_mode = 4

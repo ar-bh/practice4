@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bykg04g4jr07j"]
+
+[ext_resource type="Script" uid="uid://d24lsdydfq236" path="res://assets/entities/player/player_3d.gd" id="1_sbw63"]
+[ext_resource type="PackedScene" uid="uid://b1f3srpdelnfd" path="res://assets/vfx/smoke_vfx/smoke_explosion.tscn" id="2_r4ice"]
+[ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://assets/skins/gobot/gobot_skin_3d.tscn" id="3_rjkap"]
+[ext_resource type="PackedScene" uid="uid://6asfjx5e15q4" path="res://assets/entities/player/wand.tscn" id="4_rwavh"]
+[ext_resource type="PackedScene" uid="uid://wawlsqcberu6" path="res://assets/entities/projectile/player_fireball.tscn" id="5_k2wu0"]
+[ext_resource type="Script" uid="uid://dx2cnkdf816pj" path="res://assets/hurt_box_3d.gd" id="5_slmey"]
+[ext_resource type="PackedScene" uid="uid://cce7r30dfjm4r" path="res://assets/entities/player/health_bar/health_bar_ui.tscn" id="6_ntdjh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7x3c3"]
+height = 1.0
+radius = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y16nc"]
+height = 0.770487
+radius = 0.222565
+
+[node name="Player3D" type="CharacterBody3D" unique_id=648040702]
+top_level = true
+collision_mask = 14
+floor_constant_speed = true
+script = ExtResource("1_sbw63")
+max_health = 3
+die_vfx_scene = ExtResource("2_r4ice")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=122880549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_7x3c3")
+
+[node name="GobotSkin3D" parent="." unique_id=966106795 instance=ExtResource("3_rjkap")]
+unique_name_in_owner = true
+
+[node name="Wand" parent="GobotSkin3D" unique_id=628589955 instance=ExtResource("4_rwavh")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451245, -0.676768)
+projectile_scene = ExtResource("5_k2wu0")
+max_range = 8.0
+max_projectile_speed = 12.0
+
+[node name="CameraAnchor" type="Node3D" parent="." unique_id=758599433]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraAnchor" unique_id=721243882]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.76837e-07, 28)
+current = true
+fov = 25.0
+size = 12.555
+near = 15.0
+far = 100.0
+
+[node name="HurtBox3D" type="Area3D" parent="." unique_id=955615693]
+unique_name_in_owner = true
+collision_mask = 2
+script = ExtResource("5_slmey")
+vulnerable_to = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox3D" unique_id=729934080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("CylinderShape3D_y16nc")
+
+[node name="HealthBarUI" parent="." unique_id=804914108 instance=ExtResource("6_ntdjh")]
+unique_name_in_owner = true
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 42.725
